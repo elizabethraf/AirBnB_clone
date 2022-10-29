@@ -8,6 +8,7 @@ import uuid
 import json
 from datetime import datetime
 
+
 class BaseModel:
     """
     Base Model for the project
@@ -24,8 +25,8 @@ class BaseModel:
 
     def __str__(self):
         """Display Printing Method"""
-        return "[{}] ({}) {}".format(type(self).__name__, self.id,\
-                self.__dict__)
+        return "[{}] ({}) {}".format(type(self).__name__, self.id,
+                                     self.__dict__)
 
     def save(self):
         """Update the public instance"""
@@ -40,4 +41,3 @@ class BaseModel:
         __dict["updated_at"] = self.updated_at.isoformat()
 
         return __dict
-
