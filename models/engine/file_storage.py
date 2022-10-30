@@ -3,15 +3,8 @@
 Display FileStorage that serializes instances to a JSON file and deserializes
 JSON file to instances.
 """
-
-from models.engine.file_storage import FileStorage
 import json
-from models.user import User
-from models.state import State
-from models.city import City
-from models.place import Place
-from models.amenity import Amenity
-from models.review import Review
+from os import path
 
 
 class FileStorage:
@@ -28,7 +21,7 @@ class FileStorage:
     def new(self, obj):
         """Display objects in sets"""
         if obj:
-            self._objects["{}".format(str(type(obj).__name__), obj.id)] = obj
+            self. __objects["{}".format(str(type(obj).__name__), obj.id)] = obj
 
     def save(self):
         """serializes __objects to the JSON file"""
@@ -39,5 +32,5 @@ class FileStorage:
         if path.exists(self.__file_path):
             with open(self.__file_path, mode='r', encoding='utf-8') as f:
                 json_dict = json.loads(f.read())
-                for k, v in json_dict.items():
-                    self.__objects[k] = eval(v['__class__'])(**v)
+                for a, b in json_dict.items():
+                    self.__objects[a] = eval(b['__class__'])(**b)

@@ -3,7 +3,7 @@
 Define BaseModel
 
 """
-
+import models
 import uuid
 import json
 from datetime import datetime
@@ -31,6 +31,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             models.storage.new(self)
+
     def __str__(self):
         """Display Printing Method"""
         return "[{}] ({}) {}".format(type(self).__name__, self.id,
