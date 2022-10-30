@@ -4,7 +4,6 @@ Define BaseModel
 
 """
 import models
-from models import storage
 import uuid
 import json
 from datetime import datetime
@@ -13,7 +12,6 @@ from datetime import datetime
 class BaseModel:
     """
     Base Model for the project
-
     """
 
     def __init__(self, *args, **kwargs):
@@ -21,17 +19,17 @@ class BaseModel:
         Initialising a method with it's  public instance attributes
         """
 
-        if kwargs:
-            for key, value in kwargs.items():
-                if key == "created_at" or key == "updated_at":
-                    value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+    if kwargs:
+        for key, value in kwargs.items():
+            if key == "created_at" or key == "updated_at":
+                value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != "__class__":
                     setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """Display Printing Method"""
@@ -41,7 +39,7 @@ class BaseModel:
     def save(self):
         """Update the public instance"""
         self.update_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """Returns a dictionary containing all keys/values"""
