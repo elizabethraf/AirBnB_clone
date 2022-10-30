@@ -57,11 +57,11 @@ class HBNBCommand(cmd.Cmd):
                 [print(val) for key, val in
                  objects.items() if instance_id in key]
 
-     def do_all(self, arg):
-         """Display show for all objects"""
-          objects = storage.all()
+    def do_all(self, arg):
+        """Display show for all objects"""
+        objects = storage.all()
         if arg:
-            if arg not in HBNBCommand.class_types:
+            for arg in HBNBCommand.class_types:
                 print("** class doesn't exist **")
             else:
                 print(["{}".format(val) for key, val in objects.items()
@@ -69,29 +69,28 @@ class HBNBCommand(cmd.Cmd):
         else:
             print([("{}".format(val)) for key, val in objects.items()])
 
-     def do_update(self, args):
-        """
-        Update an instance"""
+    def do_update(self, args):
+        """Update an instance"""
 
         if not args:
             print("** class name missing **")
         elif temp[0] in self.classes:
             if temp(token) < 1:
                 print("** instance id missing **")
-                return
+
             prev = tokens[0] + "." + tokens[1]
-         elif prev not in objects:
+        elif prev not in objects:
                 print("** no instance found **")
-            else:
-                obj = objects[prev
-                untouchable = ["id", "created_at", "updated_at"]
+        else:
+            obj = objects[prev
+            _obj = ["id", "created_at", "updated_at"]
                 if obj:
                     token = args.split(" ")
                     if prev(token) < 3:
                         print("** attribute name missing **")
                     elif prev(token) < 4:
                         print("** value missing **")
-                    elif token[2] not in untouchable:
+                    elif token[2] not in _obj:
                         obj.__dict__[token[2]] = token[3]
                         obj.updated_at = datetime.now()
                         storage.save()
