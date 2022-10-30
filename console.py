@@ -4,7 +4,9 @@ Define console that contains entry point of command interpreter
 
 """
 import cmd
-
+import models
+from models.user import User
+from models.base_model import BaseModel
 
 class HBNBCommand(cmd.Cmd):
     """Dislplay  command interpreter"""

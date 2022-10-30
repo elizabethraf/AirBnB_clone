@@ -5,7 +5,7 @@ JSON file to instances.
 """
 import json
 from os import path
-
+from models.user import User
 
 class FileStorage:
     """
