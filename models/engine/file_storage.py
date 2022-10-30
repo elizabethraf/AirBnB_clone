@@ -21,11 +21,15 @@ class FileStorage:
     def new(self, obj):
         """Display objects in sets"""
         if obj:
-            self. __objects["{}".format(str(type(obj).__name__), obj.id)] = obj
+            self.__objects["{}.{}".format(str(type(obj).__name__), obj.id)] = obj
 
     def save(self):
         """serializes __objects to the JSON file"""
-        self.__objects = __file_path()
+        _tmp_obj = {}
+        for id, tobj in self.__objects.items():
+            _tmp_obj[id] = tobj.to_dict()
+        with open(self.__file_path, mode='w', encoding='utf-8') as filewrite:
+            json.dump(_tmp_obj, filewrite)
 
     def reload(self):
         """deserializes the JSON file to __objects"""
