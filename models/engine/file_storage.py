@@ -6,11 +6,17 @@ JSON file to instances.
 
 from models.engine.file_storage import FileStorage
 import json
+from models.user import User
+from models.state import State
+from models.city import City
+from models.place import Place
+from models.amenity import Amenity
+from models.review import Review
 
 
 class FileStorage:
     """
-    serialisation instances to a JSON file and deserializes JSON file to instances
+    serialisation instances to a JSON file
     """
     __file_path = "file.json"
     __objects = {}
@@ -18,6 +24,7 @@ class FileStorage:
     def all(self):
         """return the dictionary objects"""
         return (self.__objects)
+
     def new(self, obj):
         """Display objects in sets"""
         if obj:
@@ -29,7 +36,7 @@ class FileStorage:
 
     def reload(self):
         """deserializes the JSON file to __objects"""
-         if path.exists(self.__file_path):
+        if path.exists(self.__file_path):
             with open(self.__file_path, mode='r', encoding='utf-8') as f:
                 json_dict = json.loads(f.read())
                 for k, v in json_dict.items():
