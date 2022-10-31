@@ -1,0 +1,56 @@
+#!/usr/bin/python3
+class TestCity(unittest.TestCase):
+    """Test the City class"""
+    def test_is_subclass(self):
+        """Test the BaseModel"""
+        city = City()
+        self.assertIsInstance(city, BaseModel)
+        self.assertTrue(hasattr(city, "id"))
+        self.assertTrue(hasattr(city, "created_at"))
+        self.assertTrue(hasattr(city, "updated_at"))
+
+    def test_name_attr(self):
+        """Test that City"""
+        city = City()
+        self.assertTrue(hasattr(city, "name"))
+        if models.storage_t == 'db':
+            self.assertEqual(city.name, None)
+        else:
+            self.assertEqual(city.name, "")
+
+    def test_state_id_attr(self):
+        """Test that City"""
+        city = City()
+        self.assertTrue(hasattr(city, "state_id"))
+        if models.storage_t == 'db':
+            self.assertEqual(city.state_id, None)
+        else:
+            self.assertEqual(city.state_id, "")
+
+    def test_to_dict_creates_dict(self):
+        """test to_dict method"""
+        c = City()
+        new_d = c.to_dict()
+        self.assertEqual(type(new_d), dict)
+        self.assertFalse("_sa_instance_state" in new_d)
+        for attr in c.__dict__:
+            if attr is not "_sa_instance_state":
+                self.assertTrue(attr in new_d)
+        self.assertTrue("__class__" in new_d)
+
+    def test_to_dict_values(self):
+        """test for correction"""
+        t_format = "%Y-%m-%dT%H:%M:%S.%f"
+        c = City()
+        new_d = c.to_dict()
+        self.assertEqual(new_d["__class__"], "City")
+        self.assertEqual(type(new_d["created_at"]), str)
+        self.assertEqual(type(new_d["updated_at"]), str)
+        self.assertEqual(new_d["created_at"], c.created_at.strftime(t_format))
+        self.assertEqual(new_d["updated_at"], c.updated_at.strftime(t_format))
+
+    def test_str(self):
+        """test for correction"""
+        city = City()
+        string = "[City] ({}) {}".format(city.id, city.__dict__)
+        self.assertEqual(string, str(city)
