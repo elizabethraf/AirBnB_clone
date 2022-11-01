@@ -8,6 +8,7 @@ import models
 from models.user import User
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
     """Dislplay  command interpreter"""
 
@@ -80,23 +81,22 @@ class HBNBCommand(cmd.Cmd):
 
             prev = tokens[0] + "." + tokens[1]
         elif prev not in objects:
-                print("** no instance found **")
+            print("** no instance found **")
         else:
-            obj = objects[prev
+            obj = objects[prev]
             _obj = ["id", "created_at", "updated_at"]
-                if obj:
-                    token = args.split(" ")
-                    if prev(token) < 3:
-                        print("** attribute name missing **")
-                    elif prev(token) < 4:
-                        print("** value missing **")
-                    elif token[2] not in _obj:
-                        obj.__dict__[token[2]] = token[3]
-                        obj.updated_at = datetime.now()
-                        storage.save()
+            if obj:
+                token = args.split(" ")
+                if prev(token) < 3:
+                    print("** attribute name missing **")
+                elif prev(token) < 4:
+                    print("** value missing **")
+                elif token[2] not in _obj:
+                    obj.__dict__[token[2]] = token[3]
+                    obj.updated_at = datetime.now()
+                    storage.save()
         else:
             print("** class doesn't exist **")
-
 
     def do_quit(self, arg):
         """Quit command to exit the program"""

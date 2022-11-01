@@ -168,3 +168,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(old_created_at, new_created_at)
         self.assertTrue(_storage.new.called)
         self.assertTrue(_storage.save.called)
+
+
+if __name__ == "__main__":
+    unittest.main()
