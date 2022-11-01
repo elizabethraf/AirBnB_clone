@@ -7,6 +7,7 @@ import json
 from os import path
 from models.user import User
 
+
 class FileStorage:
     """
     serialisation instances to a JSON file
@@ -21,7 +22,8 @@ class FileStorage:
     def new(self, obj):
         """Display objects in sets"""
         if obj:
-            self.__objects["{}.{}".format(str(type(obj).__name__), obj.id)] = obj
+            self.__objects["{}.{}".format(str(type(obj).__name__), obj.
+                                          id)] = obj
 
     def save(self):
         """serializes __objects to the JSON file"""
