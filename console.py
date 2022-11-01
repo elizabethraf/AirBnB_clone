@@ -116,13 +116,13 @@ class HBNBCommand(cmd.Cmd):
 
         """
         if self.lastcmd:
-           self.lastcmd = ""
-           return self.onecmd('\n')
+            self.lastcmd = ""
+            return self.onecmd('\n')
 
     def close(self):
         if self.file:
-           self.file.close()
-           self.file = None
+            self.file.close()
+            self.file = None
 
 
 if __name__ == '__main__':
