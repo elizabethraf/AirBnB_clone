@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
 Define BaseModel
+
 """
 import uuid
 import json
@@ -10,9 +11,10 @@ from datetime import datetime
 class BaseModel:
     """
     Base Model for the project
+
     """
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self):
         """
         Initialising a method with it's  public instance attributes
         """
