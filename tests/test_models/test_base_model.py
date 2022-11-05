@@ -14,6 +14,17 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue('base_model.py'.isupper())
         self.assertFalse('base_model.py'.isupper())
 
+    def tearDown(self):
+        """Tears down test methods."""
+        self.resetStorage()
+        pass
+
+    def re_Storage(self):
+        """Reset FileStorage data."""
+        FileStorage._FileStorage__objects = {}
+        if os.path.isfile(FileStorage._FileStorage__file_path):
+            os.remove(FileStorage._FileStorage__file_path)
+
     def test_split(self):
         s = 'BaseModel'
         self.assertEqual(s.split(), ['Base', 'Model'])
