@@ -23,3 +23,8 @@ class BaseModel:
         """Display Printing Method"""
         return '[{0}] ({1}) {2}'.format(
                 self.__class__.__name__, self.id, self.__dict__)
+
+
+    def save(self):
+        """Update public instance"""
+        self.updated_at = datetime.now()
