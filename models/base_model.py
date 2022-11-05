@@ -28,3 +28,12 @@ class BaseModel:
     def save(self):
         """Update public instance"""
         self.updated_at = datetime.now()
+
+    def to_dict(self):
+        """Returns a dictionary containing all keys/values"""
+        __dict = self.__dict__.copy()
+        __dict['__class__'] = self.__class__.__name__
+        __dict['created_at'] = self.created_at.isoformat()
+        __dict['updated_at'] = self.updated_at.isoformat()
+
+        return __dict
