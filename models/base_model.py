@@ -19,17 +19,16 @@ class BaseModel:
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
-    def __str__(self):
+   def __str__(self):
         """Display Printing Method"""
         return '[{0}] ({1}) {2}'.format(
                 self.__class__.__name__, self.id, self.__dict__)
 
-
-    def save(self):
+   def save(self):
         """Update public instance"""
         self.updated_at = datetime.now()
 
-    def to_dict(self):
+   def to_dict(self):
         """Returns a dictionary containing all keys/values"""
         __dict = self.__dict__.copy()
         __dict['__class__'] = self.__class__.__name__
