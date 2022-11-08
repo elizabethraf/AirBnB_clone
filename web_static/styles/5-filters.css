@@ -9,7 +9,7 @@
     align-items: center;
 }
 
-search.button {
+.button {
     font-size: 18px;
     color: white;
     background-color: #FF5A5F;
@@ -22,26 +22,26 @@ search.button {
     opacity: 1;
 }
 
-search.button:hover {
+.button:hover {
     opacity: 0.9;
 }
 
-contains.locations, .amenities {
+.locations, .amenities {
     height: 100%;
     width: 25%;
     padding-left: 50px;
 }
 
-contains.locations {
+.locations {
     border-right: 1px solid #DDDDDD;
 }
 
-contains.locations h3, .amenities h3 {
+.locations h3, .amenities h3 {
     font-weight: 600;
     margin: 11px 20px 5px;
 }
 
-contains.locations h4, .amenities h4 {
+.locations h4, .amenities h4 {
     font-weight: 400;
     font-size: 14px;
     margin: 0;
